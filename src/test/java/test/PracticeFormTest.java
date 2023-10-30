@@ -9,8 +9,7 @@ import java.io.File;
 
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Homework {
     @BeforeAll
@@ -22,8 +21,10 @@ public class Homework {
     }
 
     @Test
-    void PositiveFormTest() {
+    void PracticeFormTest() {
         open("/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         $("#firstName").setValue("Max");
         $("#lastName").setValue("Gor");
         $("#userEmail").setValue("maxgor@gmail.com");
