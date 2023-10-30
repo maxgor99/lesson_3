@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -34,12 +35,24 @@ public class Homework {
         $(".react-datepicker__day--001").click();
         $("#subjectsInput").val("English").pressEnter();
         $("#uploadPicture").uploadFile(new File("src/test/pic/frost.jpeg"));
-        $("[for='gender-radio-1']").click();
         $("[for='hobbies-checkbox-1']").click();
         $("[for='hobbies-checkbox-3']").click();
         $("#currentAddress").setValue("text text text");
         $("#react-select-3-input").val("NCR").pressEnter();
         $("#react-select-4-input").val("Delhi").pressEnter();
+        $("#submit").pressEnter();
+
+
+        $(".table-responsive").shouldHave(text("Max Gor"));
+        $(".table-responsive").shouldHave(text("maxgor@gmail.com"));
+        $(".table-responsive").shouldHave(text("1122334455"));
+        $(".table-responsive").shouldHave(text("Male"));
+        $(".table-responsive").shouldHave(text("1 October,1989"));
+        $(".table-responsive").shouldHave(text("English"));
+        $(".table-responsive").shouldHave(text("Sports, Music"));
+        $(".table-responsive").shouldHave(text("frost.jpeg"));
+        $(".table-responsive").shouldHave(text("text text text"));
+        $(".table-responsive").shouldHave(text("NCR Delhi"));
 
 
     }
