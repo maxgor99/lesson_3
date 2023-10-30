@@ -11,7 +11,7 @@ import java.io.File;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
-public class Homework {
+public class PracticeFormTest {
     @BeforeAll
     static void beforeAll() {
         Configuration.browserSize = "1366x766";
@@ -21,7 +21,7 @@ public class Homework {
     }
 
     @Test
-    void PracticeFormTest() {
+    void SuccessTest() {
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
@@ -35,7 +35,7 @@ public class Homework {
         $(".react-datepicker__month-select").selectOption("October");
         $(".react-datepicker__day--001").click();
         $("#subjectsInput").val("English").pressEnter();
-        $("#uploadPicture").uploadFile(new File("src/test/pic/frost.jpeg"));
+        $("#uploadPicture").uploadFromClasspath("frost.jpeg");
         $("[for='hobbies-checkbox-1']").click();
         $("[for='hobbies-checkbox-3']").click();
         $("#currentAddress").setValue("text text text");
@@ -54,6 +54,7 @@ public class Homework {
         $(".table-responsive").shouldHave(text("frost.jpeg"));
         $(".table-responsive").shouldHave(text("text text text"));
         $(".table-responsive").shouldHave(text("NCR Delhi"));
+
 
 
     }
